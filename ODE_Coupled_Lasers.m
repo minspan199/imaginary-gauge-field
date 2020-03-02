@@ -17,10 +17,7 @@ y0 = [rand(Nd + 1,1);
     zeros(Nd + 1,1)]; 
 [T,Y] = ode45(@rate_equation_SSH,T_span,y0); 
 
-
 % h = -0.3466; h = 0.2466;
-
-
 
 figure
 N_span = length(T);
@@ -36,7 +33,6 @@ xlabel('Time')
 ylabel('Site number')
 zlabel('Phase')
 % subplot(2,1,2)
-
 
 figure
 % subplot(2,1,1) 
@@ -59,7 +55,6 @@ zlabel('Carrier densities')
 
 colormap(jet)
 
-
 figure
 N_span = length(T);
 for x0 = 1:1:Nd + 1
@@ -74,7 +69,6 @@ xlabel('Time')
 ylabel('Site number')
 zlabel('Carrier densities')
 % subplot(2,1,2)
-
 
 figure
 plot(T,angle(Y(:,1:Nd + 1))) 
@@ -93,6 +87,7 @@ subplot(2,1,2)
 plot(T,angle(Y(:,Nd + 2:2*Nd + 1))) 
 title('Densità dei fotoni nel mezzo attivo') % photons density in activer region And this is the function. 
 
+clearvars -except Y T
 
 function dy = rate_equation_SSH(t,y) 
 
