@@ -30,3 +30,6 @@ bar((V(:,bn))/max(abs(V(:,bn))))
 set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 14) % Font Size
 axis([0 2*Nd + 2 -1 1])
+
+
+
