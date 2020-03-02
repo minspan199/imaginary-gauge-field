@@ -67,4 +67,4 @@ plt.title('Eigenstates evolution of the laser array')
 plt.xlabel('Normalized time')
 plt.ylabel('Amplitudes')
 plt.tight_layout()
-plt.show();
+plt.show()
