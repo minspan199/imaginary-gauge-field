@@ -91,7 +91,7 @@ clearvars -except Y T
 
 function dy = rate_equation_SSH(t,y) 
 
-global Nd  t1 t2  h  tau_p pA pB dB tau_s alpha 
+global Nd  t1 t2 g h N0 tau_p pA pB dB tau_s alpha H
 y1 = y(1:Nd + 1);
 y2 = y(Nd + 2:2*Nd + 1);
 y3 = y(2*Nd + 2:3*Nd + 2);
@@ -99,13 +99,12 @@ dy1 = (1 - 1i*alpha)*y3.*y1 - 1i*t1*tau_p*exp(h)*[y2;0] - 1i*t2*tau_p*exp(-h)*[0
 dy2 = -(pB - 1i*dB*tau_p)*y2 - 1i*t1*tau_p*exp(-h)*y1(1:Nd) - 1i*t2*tau_p*exp(h)*y1(2:Nd + 1);
 dy3 = pA*tau_p/tau_s - tau_p/tau_s*y3 - tau_p/tau_s*(1 + 2*y3).*abs(y1).*abs(y1);
 dy = [dy1;dy2;dy3];
-t
 end
 
 % this is a very simple (dimensionless) and efficient version of the rate equations (note you % can add another equation, dy(3)(not coupled), that gives you the phase(t) of your laser!
 function dy = rate_equation_circular(t,y) 
 
-global Nd       tau_p pA   tau_s alpha H
+global Nd t0 t1 t2 g h N0 tau_p pA pB dB tau_s alpha H
 y1 = y(1:Nd + 1);
 y2 = y(Nd + 2:2*Nd + 2);
 
