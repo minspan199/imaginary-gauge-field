@@ -2,8 +2,10 @@ clc
 clear all 
 close all 
 global Nd t0 t1 t2 g h N0 tau_p pA pB dB tau_s alpha H
-Nd = 15; t1 = 1; t2 = 3; t0 = 1; g = 0.5; h = -0.5493; N0 = 1e24;
-tau_p = 0.02;  pB = g*tau_p; dB = 0; tau_s = 2000*tau_p; alpha = 3; 
+Nd = 15; t1 = 1; t2 = 3; t0 = 1; 
+g = 0.5; h = -0.5493; N0 = 1e24;
+tau_p = 0.02; pB = g*tau_p; dB = 0; 
+tau_s = 2000*tau_p; alpha = 3; 
 
 k1 = exp(h); k2 = exp(-h); g0 = k2 - k1;pA = g*tau_p;
 H = - diag(g0*ones(1,Nd + 1)) ...
