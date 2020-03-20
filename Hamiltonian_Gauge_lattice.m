@@ -1,35 +1,44 @@
 clc
 clear all
 close all
-Nd = 43; 
+Nd = 15; 
 t = 1; 
-h = - 0.01;
+h = - 0.02;
 k1 = exp(h); 
 k2 = exp(-h); 
 g = k1 - k2;
 
-% h = -0.3466; h = 0.2466;
+Nr = (Nd + 1)/4;
+F0 = sparse(zeros(Nr, Nr));
+E1 = sparse(fliplr(diag([k2 0.0*k1 0.0*k1 k1])));
+E2 = sparse(fliplr(0*diag([k1 k1 k1 k1])));
+D1 = diag(-g*1i*ones(1,Nr)) + diag(k1*ones(1,Nr-1), 1) + diag(k2*ones(1,Nr-1), -1);
+D2 = diag(-g*1i*ones(1,Nr)) + diag(k2*ones(1,Nr-1), 1) + diag(k1*ones(1,Nr-1), -1);
+D3 = diag(3*g*1i*ones(1,Nr)) + diag(0.3*k1*ones(1,Nr-1), 1) + diag(0.3*k1*ones(1,Nr-1), -1);
+H = sparse([D1 E1 F0 F0;
+            E1 D1 E2 F0;
+            F0 E2 D3 E2;
+            F0 F0 E2 D3]);
 
-H = diag(g*1i*ones(1,Nd + 1)) + ...
-    diag(t*k1*ones(1,Nd),1) + ...
-    diag(t*k2*ones(1,Nd),-1);  % Assembling of Hamiltonian matrix
-H(1,Nd + 1) = t*k2; H(Nd + 1,1) = t*k1;
-% H((Nd + 1)/2 + 1,(Nd + 1)/2 + 1) = H((Nd + 1)/2 + 1,(Nd + 1)/2 + 1) - 0.1i;
-% H(Nd + 1,Nd + 1) = 0.25i;
-H(1,1) = g*1i;
-[V, A] = eig(H);
+% H = sparse([D1 E1;
+%             E1 D1;
+%             ]);
+
+[V, A] = eig(full(H));
 lam = diag(A);
-[~, idx] = sort(real(lam));
-lam1 = lam(idx);
+% [~, idx] = sort(real(lam));
+% lam1 = lam(idx);
 figure
-plot(real(lam1),'b*')
+plot(real(lam),'b*')
 hold on
-plot(imag(lam1)*50,'r*')
+plot(imag(lam)*50,'r*')
 set(gcf, 'Position', [00, 00, 350, 300])
-axis([0 Nd + 1 -2.5 2.5])
+% axis([0 Nd + 1 -2.5 2.5])
 set(gca,'FontSize', 14) % Font Size
+Lasing = find(imag(diag(V)) > 0);
+Lasing=5
 
-bn = 22;
+bn = 5
 figure
 bar(angle(V(:,bn)),'b')
 hold on
@@ -37,51 +46,60 @@ plot(abs(V(:,bn))/max(abs(V(:,bn))),'r*')
 set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 14) % Font Size
 axis([0 Nd + 1 -pi pi])
-% 
-% a = (Nd + 1)/4 + 1;
-% I = zeros(a,a);
-% for kb = 1:1:(a-1)
-%     I(kb,1) = abs(V(kb,bn));
-%     I(a,kb) = abs(V(kb + a - 1,bn));
-%     I(a + 1 - kb,a) = abs(V(kb + 2*(a - 1),bn));
-%     I(1,a + 1 - kb) = abs(V(kb + 3*(a - 1),bn));
-% end
+
+
+Intensity = abs(V(:, Lasing)) .* abs(V(:, Lasing));
+Intensity = Intensity ./ max(Intensity);
+Phase = angle(V(:, Lasing));
+Nall = sqrt(Nd+1);
+for k = 1:1:Nall
+
+    if mod(k, 2)
+        RT(k, :) = Intensity((k - 1) * Nall + (1:Nall));
+    else
+        RT(k, :) = fliplr(Intensity((k - 1) * Nall + (1:Nall))');
+    end
+
+end
+
+for k = 1:1:Nall
+
+    if mod(k, 2)
+        RA(k, :) = Phase((k - 1) * Nall + (1:Nall));
+    else
+        RA(k, :) = fliplr(Phase((k - 1) * Nall + (1:Nall))');
+    end
+
+end
+
+figure;
+imagesc(RT);
+colorbar;
+set(gcf, 'Position', [00, 00, 400, 300]);
+set(gca, 'FontSize', 14);
+
+figure;
+imagesc(RA);
+colormap([0.5 0.5 0.5; 0 1 1; 0 1 0; 1 0.5 0; 0.5 0.5 0.5]);
+colorbar;
+% bn = 9;
 % figure
-% imagesc(I)
+% bar(angle(V(:,bn)),'b')
+% hold on
+% plot(abs(V(:,bn))/max(abs(V(:,bn))),'r*')
 % set(gcf, 'Position', [00, 00, 350, 300])
-% colormap('hot')
-% colorbar
-% 
-% a = (Nd + 1)/4 + 1;
-% I = zeros(a,a);
-% for kb = 1:1:(a-1)
-%     I(kb,1) = angle(V(kb,bn));
-%     I(a,kb) = angle(V(kb + a - 1,bn));
-%     I(a + 1 - kb,a) = angle(V(kb + 2*(a - 1),bn));
-%     I(1,a + 1 - kb) = angle(V(kb + 3*(a - 1),bn));
-% end
+% set(gca,'FontSize', 14) % Font Size
+% axis([0 Nd + 1 -pi pi])
+% phi = linspace(2*pi/(Nd + 1),2*pi,Nd + 1);
+% phi2 = circshift(phi,1);
+% xRing = [cos(phi);cos(phi)*1.5;cos(phi2)*1.5;cos(phi2)];
+% yRing = [sin(phi);sin(phi)*1.5;sin(phi2)*1.5;sin(phi2)];
+% ringData = angle(V(:,bn));
 % figure
-% imagesc(-I,[-pi pi])
-% set(gcf, 'Position', [00, 00, 350, 300])
-% map = [1 0 0
-%     1 1 0
-%     0 0 1
-%     1 1 0
-%     1 0 0];
+% patch(xRing,yRing,ringData, 'Edgecolor','none');
+% set(gca,'cLim',[-pi pi]);
+% axis square
+%  axis off
+% set(gcf,'color','w');
 % colormap('hsv')
 % colorbar
-
-
-phi = linspace(2*pi/(Nd + 1),2*pi,Nd + 1);
-phi2 = circshift(phi,1);
-xRing = [cos(phi);cos(phi)*1.5;cos(phi2)*1.5;cos(phi2)];
-yRing = [sin(phi);sin(phi)*1.5;sin(phi2)*1.5;sin(phi2)];
-ringData = angle(V(:,bn));
-figure
-patch(xRing,yRing,ringData, 'Edgecolor','none');
-set(gca,'cLim',[-pi pi]);
-axis square
-axis off
-set(gcf,'color','w');
-colormap('hsv')
-colorbar
