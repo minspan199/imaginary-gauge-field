@@ -1,4 +1,4 @@
-function plotring(E)
+function plotring(E, zlimt)
     %E: target intensity array
     Ny = length(E(1, :)); % ring number in y
     Nx = length(E(:, 1)); % ring number in x
@@ -17,7 +17,7 @@ function plotring(E)
     %start to plot
     figure;
     ha = bar3(f); 
-    zlim([0 1.2]);
+    zlim(zlimt);
     box on;
     set(gca,'AmbientLightColor',...
     [0.941176470588235 0.941176470588235 0.941176470588235],'Color',...
