@@ -37,40 +37,6 @@ plot(abs(V(:,bn))/max(abs(V(:,bn))),'r*')
 set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 14) % Font Size
 axis([0 Nd + 1 -pi pi])
-% 
-% a = (Nd + 1)/4 + 1;
-% I = zeros(a,a);
-% for kb = 1:1:(a-1)
-%     I(kb,1) = abs(V(kb,bn));
-%     I(a,kb) = abs(V(kb + a - 1,bn));
-%     I(a + 1 - kb,a) = abs(V(kb + 2*(a - 1),bn));
-%     I(1,a + 1 - kb) = abs(V(kb + 3*(a - 1),bn));
-% end
-% figure
-% imagesc(I)
-% set(gcf, 'Position', [00, 00, 350, 300])
-% colormap('hot')
-% colorbar
-% 
-% a = (Nd + 1)/4 + 1;
-% I = zeros(a,a);
-% for kb = 1:1:(a-1)
-%     I(kb,1) = angle(V(kb,bn));
-%     I(a,kb) = angle(V(kb + a - 1,bn));
-%     I(a + 1 - kb,a) = angle(V(kb + 2*(a - 1),bn));
-%     I(1,a + 1 - kb) = angle(V(kb + 3*(a - 1),bn));
-% end
-% figure
-% imagesc(-I,[-pi pi])
-% set(gcf, 'Position', [00, 00, 350, 300])
-% map = [1 0 0
-%     1 1 0
-%     0 0 1
-%     1 1 0
-%     1 0 0];
-% colormap('hsv')
-% colorbar
-
 
 phi = linspace(2*pi/(Nd + 1),2*pi,Nd + 1);
 phi2 = circshift(phi,1);

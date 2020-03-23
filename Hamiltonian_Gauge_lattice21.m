@@ -11,13 +11,13 @@ g = k1 - k2;
 Nr = (Nd + 1)/4;
 F0 = sparse(zeros(Nr, Nr));
 E1 = sparse(fliplr(diag([k2 0 0 k1])));
-E2 = sparse(fliplr(diag([0 0 k1 k2])));
-E2_ = sparse(fliplr(diag([k1 k2 0 0 ])));
+E2 = sparse(fliplr(diag([0 k1 k2 0])));
+E2_ = sparse(fliplr(diag([0 k1 k2 0])));
 E3 = sparse(fliplr(diag([k2 0 0 k1])));
 
 D1 = diag(-g*1i*ones(1,Nr)) + diag(k1*ones(1,Nr-1), 1) + diag(k2*ones(1,Nr-1), -1);
-D2 = diag(-g*1i*ones(1,Nr)) + diag([k1 k1 0], 1) + diag([k2 k2 0], -1);
-D3 = diag(-g*1i*ones(1,Nr)) + diag([0 k1 k1], 1) + diag([0 k2 k2], -1);
+D2 = diag(-g*1i*ones(1,Nr)) + diag([k1 0 k2], 1) + diag([k2 0 k1], -1);
+D3 = diag(-g*1i*ones(1,Nr)) + diag([k1 0 k2], 1) + diag([k2 0 k1], -1);
 D4 = diag(-g*1i*ones(1,Nr)) + diag(k1*ones(1,Nr-1), 1) + diag(k2*ones(1,Nr-1), -1);
 
 H = sparse([D1 E1 F0 F0;
@@ -76,7 +76,6 @@ for k = 1:1:Nall
     end
 
 end
-
 
 plotring(RT, [0 1.2]);
 set(gcf, 'Position', [00, 00, 400, 300]);
