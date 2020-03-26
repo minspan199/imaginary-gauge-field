@@ -7,7 +7,7 @@ h = - 0.02;
 k1 = exp(h); 
 k2 = exp(-h); 
 g = k1 - k2;
-
+g=-0.04
 Nr = (Nd + 1)/4;
 F0 = sparse(zeros(Nr, Nr));
 E1 = sparse(fliplr(diag([k2 0 0 k1])));
