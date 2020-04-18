@@ -12,7 +12,7 @@ g = 0.01;
 % k_link_1 = 5;
 k_link_2 = 0.00;
 
-for k_link_1 = 0:0.01:5
+for k_link_1 = 0:1:5
 
     %     k_link_2 = 1 / k_link_1;
     % positive imaginary part is gain
@@ -39,7 +39,7 @@ for k_link_1 = 0:0.01:5
     [V, A] = eig(full(H));
     lam = diag(A);
     Lasing = find(abs(real(lam)) < 1e-6);
-    data(ind, :) = [lam(Lasing)];
+    data(ind, :) = lam(Lasing);
     ind = ind + 1
 end
 
