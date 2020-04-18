@@ -38,15 +38,6 @@ for k_link_1 = 0:0.01:5
     H(Nd + 2, Nd + 1) = k_link_2;
     [V, A] = eig(full(H));
     lam = diag(A);
-    % [~, idx] = sort(real(lam));
-    % lam1 = lam(idx);
-    %     figure
-    %     plot(real(lam), 'b*')
-    %     hold on
-    %     plot(imag(lam) * 50, 'r*')
-    %     set(gcf, 'Position', [00, 00, 350, 300])
-    %     % axis([0 Nd + 1 -2.5 2.5])
-    %     set(gca, 'FontSize', 14) % Font Size
     Lasing = find(abs(real(lam)) < 1e-6);
     data(ind, :) = [lam(Lasing)];
     ind = ind + 1
