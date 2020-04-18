@@ -4,16 +4,19 @@ close all
 Nd = 15;
 t = 1;
 h = -0.01;
-
 k1 = exp(-h);
 k2 = exp(h);
-% positive imaginary part is gain
-g = k1 - k2;
+% k_link_1 = 5;
 ind = 1;
-k_link_1 = 5;
-k_link_2 = 0;
+g = 0.01;
+% k_link_1 = 5;
+k_link_2 = 0.00;
 
-for g = 0.1:-0.01:0.0
+for k_link_1 = 0:0.01:5
+
+    %     k_link_2 = 1 / k_link_1;
+    % positive imaginary part is gain
+
     Nr = (Nd + 1) / 4;
     F0 = sparse(zeros(Nr, Nr));
     E1 = sparse(fliplr(diag([k2 0 0 k1])));
@@ -37,16 +40,16 @@ for g = 0.1:-0.01:0.0
     lam = diag(A);
     % [~, idx] = sort(real(lam));
     % lam1 = lam(idx);
-%     figure
-%     plot(real(lam), 'b*')
-%     hold on
-%     plot(imag(lam) * 50, 'r*')
-%     set(gcf, 'Position', [00, 00, 350, 300])
-%     % axis([0 Nd + 1 -2.5 2.5])
-%     set(gca, 'FontSize', 14) % Font Size
+    %     figure
+    %     plot(real(lam), 'b*')
+    %     hold on
+    %     plot(imag(lam) * 50, 'r*')
+    %     set(gcf, 'Position', [00, 00, 350, 300])
+    %     % axis([0 Nd + 1 -2.5 2.5])
+    %     set(gca, 'FontSize', 14) % Font Size
     Lasing = find(abs(real(lam)) < 1e-6);
     data(ind, :) = [lam(Lasing)];
-    ind = ind + 1;
+    ind = ind + 1
 end
 
 g = 0.08;
