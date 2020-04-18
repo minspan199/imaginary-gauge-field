@@ -4,10 +4,11 @@ close all
 Nd = 15; 
 t = 1; 
 h = - 0.02;
-k1 = exp(h); 
-k2 = exp(-h); 
+k1 = exp(4*h); 
+k2 = exp(-0*h); 
+% positive imaginary part is gain
 g = k1 - k2;
-
+g = 0.08;
 Nr = (Nd + 1)/4;
 F0 = sparse(zeros(Nr, Nr));
 E1 = sparse(fliplr(diag([k2 0 0 k1])));
@@ -41,9 +42,9 @@ set(gcf, 'Position', [00, 00, 350, 300])
 % axis([0 Nd + 1 -2.5 2.5])
 set(gca,'FontSize', 14) % Font Size
 Lasing = find(imag(diag(V)) > 0);
-Lasing=8
+Lasing=9
 
-bn = 8
+bn = 9
 figure
 bar(angle(V(:,bn)),'b')
 hold on
