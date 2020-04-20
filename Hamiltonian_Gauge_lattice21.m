@@ -6,7 +6,7 @@ t = 1;
 h =- 0.02;
 
 % positive imaginary part is gain
-g = k1 - k2;
+
 ind = 1;
 k_link_1 = exp(0.06);
 k_link_2 = exp(-0.1);
@@ -14,10 +14,11 @@ k_link_2 = exp(-0.1);
 H(Nd+2,Nd+2) = 0;
 H(Nd+1,Nd+2) = k_link_1;
 H(Nd+2,Nd+1) = k_link_2;
-for g = 0.08:-0.01:-0.08
+
     
     k1 = exp(4 * h);
 k2 = exp(-0 * h);
+g = k1 - k2;
     Nr = (Nd + 1) / 4;
     F0 = sparse(zeros(Nr, Nr));
     E1 = sparse(fliplr(diag([k2 0 0 k1])));
@@ -49,7 +50,7 @@ k2 = exp(-0 * h);
     Lasing = find(abs(real(lam)) < 1e-6);
     data(ind, :) = lam(Lasing);
     ind = ind + 1;
-end
+
 
 g = 0.08;
 
