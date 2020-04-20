@@ -5,6 +5,7 @@
 
 % DEFINING SOME INITIAL VALUES
 clear all;
+close all;
 ext = '';
 column = 2;
 filename_data = 'variables.xlsx'; % name of file containing simulation parameters
@@ -55,9 +56,9 @@ for NN = 1:map_N
     U_total_Phi = zeros(N);
     Intensity_total_incoh = zeros(N);
 
-    for ii = 1:7
+    for ii = 1:map_dim
 
-        for jj = 1:7
+        for jj = 1:map_dim
             U_ap(:, :, ii, jj) = zeros(N); %setting near field matrices to zero
             U(:, :, ii, jj) = zeros(N); %setting far field matrices to zero
         end
@@ -69,16 +70,18 @@ for NN = 1:map_N
     if Hex == 1
         x_pitch = y_pitch * sin(pi / 3);
 
-        for ii = 1:7
+        for ii = 1:map_dim
 
-            for jj = 1:7
 
-                if mod(jj, 2) == 0    % if ii is even
-                    U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-((xs - (jj - 1) * x_pitch).^2 ...
-                        + (ys - (ii * 2 - 1) * y_pitch / 2).^2) / (w^2)) * exp(1i * Phi(ii, jj));
+            for jj = 1:map_dim
+
+
+                if mod(jj, 2) == 0    % if ii is even/xs-near field grids
+                    U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-(((xs - (jj - 1) * x_pitch)*0).^2 ...
+                        + ((ys - (ii * 2 - 1) * y_pitch / 2)*0).^2) / (w^2)) * exp(1i * Phi(ii, jj));
                     else                 % if ii is odd
-                    U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-((xs - (jj - 1) * x_pitch).^2 ...
-                        + (ys - (ii - 1) * y_pitch).^2) / (w^2)) * exp(1i * Phi(ii, jj));
+                    U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-(((xs - (jj - 1) * x_pitch)*0).^2 ...
+                        + ((ys - (ii - 1) * y_pitch)*0).^2) / (w^2)) * exp(1i * Phi(ii, jj));
                 end
 
             end
@@ -89,20 +92,22 @@ for NN = 1:map_N
     elseif Hex == 0
         x_pitch = y_pitch;
 
-        for ii = 1:7
+        for ii = 1:map_dim
 
-            for jj = 1:7
-                U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-((xs - (jj - 1) * x_pitch).^2 ...
-                    + (ys - (ii - 1) * y_pitch).^2) / (w^2)) * exp(i * Phi(ii, jj));
+
+            for jj = 1:map_dim
+
+                U_ap(:, :, ii, jj) = Amp(ii, jj) * exp((-((xs - (jj - 1) * x_pitch).^2 ...
+                    + (ys - (ii - 1) * y_pitch).^2) / (w^2))) * exp(1i * Phi(ii, jj));
             end
 
         end
 
     end
 
-    for ii = 1:7
+    for ii = 1:map_dim
 
-        for jj = 1:7
+        for jj = 1:map_dim
             U(:, :, ii, jj) = Fraunhoffer(U_ap(:, :, ii, jj), k, z, x_det, y_det, lambda);
             U_ap_total = U_ap_total + U_ap(:, :, ii, jj);
             U_total_Phi = U_total_Phi + U(:, :, ii, jj);
@@ -130,8 +135,9 @@ for NN = 1:map_N
         clf;
     end
 
-    set(Fig2, 'Position', [30 400 250 200]); colormap(jet);
-    surf(xs * 10^6, -ys * 10^6, real(U_ap_total), ...
+    set(Fig2, 'Position', [0 0 350 300]);
+    colormap(jet);
+    surf(xs * 10^6, -ys * 10^6, abs(U_ap_total), ...
         'LineStyle', 'none', 'FaceColor', 'interp', ...
         'FaceLighting', 'phong', 'AmbientStrength', 0.3);
     shading flat;
@@ -149,9 +155,22 @@ for NN = 1:map_N
     ylabel('\mum', 'FontSize', fs, 'FontName', 'Calibri');
     set(gcf, 'PaperPositionMode', 'auto');
 
-    % PLOT FAR FIELD
+    % PLOT FAR FIELD PHASE
     Fig3 = figure(8 + column + fignum); clf;
-    set(Fig3, 'Position', [300 + 50 * (column - 1) 400 200 150]);
+    set(Fig3, 'Position', [300 + 50 * (column - 1) 400 350 300]);
+    surf(angle_x, -angle_y, angle(U_total_Phi), ...
+        'LineStyle', 'none', 'FaceColor', 'interp', 'FaceLighting', 'phong', ...
+        'AmbientStrength', 0.3), shading flat;
+    axis([-theta_sim theta_sim -theta_sim theta_sim 0 1]); % setting axis limits
+    set(gca, 'Visible', 'off', 'plotboxaspectratio', [1, 1, 3]);
+%     camva(3);
+    grid off;
+    view([0 90]);
+    figure;imagesc(angle(U_total_Phi))
+    
+    % PLOT FAR FIELD
+    Fig3 = figure(8 + column + fignum + 10); clf;
+    set(Fig3, 'Position', [300 + 50 * (column - 1) 400 350 300]);
     surf(angle_x, -angle_y, abs(Intensity_normalized_Phi), ...
         'LineStyle', 'none', 'FaceColor', 'interp', 'FaceLighting', 'phong', ...
         'AmbientStrength', 0.3), shading flat;
@@ -160,12 +179,15 @@ for NN = 1:map_N
     camva(3);
     grid off;
     view([0 90]);
+    
+    
+    
     % adding 10 degree circle and cut line
     hold on;
     x1 = 0:pi / 500:10;
     t = ones(1, length(x1));
-    plot3(theta_circle * cos(x1), theta_circle * sin(x1), t, 'r', 'LineWidth', 2);
-    text(0.8 * theta_circle, 0.8 * theta_circle, 1, [num2str(theta_circle), 'ÃƒÂ¯Ã‚Â¿Ã‚Â½'], 'Color', 'r', 'FontSize', fs);
+%     plot3(theta_circle * cos(x1), theta_circle * sin(x1), t, 'r', 'LineWidth', 2);
+%     text(0.8 * theta_circle, 0.8 * theta_circle, 1, [num2str(theta_circle), 'ÃƒÂ¯Ã‚Â¿Ã‚Â½'], 'Color', 'r', 'FontSize', fs);
 
     if plot_cutline == 1   % plots line along slice angle
         plot3(0, 0, 1, '.k');
@@ -191,7 +213,7 @@ for NN = 1:map_N
 
     end
 
-    percent_center_lobe = power_center_lobe / power_total
+    percent_center_lobe = power_center_lobe / power_total;
 
     % PLOT FAR FIELD INTENSITY SLICE
     % Plots intensity along slice angle

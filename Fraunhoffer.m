@@ -10,7 +10,6 @@ function [U_det] = Fraunhoffer(U_ap, k, z, xs, ys, lambda)
 % U             (Field at detector)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 Angular_Spectrum = fftshift(fft2(fftshift(U_ap))); %Near Field
-U_det = exp(i*k*z)*exp(i*k*(xs.^2+ys.^2)/(2*z)).*Angular_Spectrum...
-    /(i*lambda*z);
+U_det = exp(1i*k*z)*exp(1i*k*(xs.^2+ys.^2)/(2*z)).*Angular_Spectrum/(1i*lambda*z);
 end
 
