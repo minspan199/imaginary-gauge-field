@@ -72,16 +72,14 @@ for NN = 1:map_N
 
         for ii = 1:map_dim
 
-
             for jj = 1:map_dim
 
-
-                if mod(jj, 2) == 0    % if ii is even/xs-near field grids
-                    U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-(((xs - (jj - 1) * x_pitch)*0).^2 ...
-                        + ((ys - (ii * 2 - 1) * y_pitch / 2)*0).^2) / (w^2)) * exp(1i * Phi(ii, jj));
+                if mod(jj, 2) == 0    % if ii is even / xs - near field grids
+                    U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-(((xs - (jj - 1) * x_pitch) * 0).^2 ...
+                        + ((ys - (ii * 2 - 1) * y_pitch / 2) * 0).^2) / (w^2)) * exp(1i * Phi(ii, jj));
                     else                 % if ii is odd
-                    U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-(((xs - (jj - 1) * x_pitch)*0).^2 ...
-                        + ((ys - (ii - 1) * y_pitch)*0).^2) / (w^2)) * exp(1i * Phi(ii, jj));
+                    U_ap(:, :, ii, jj) = Amp(ii, jj) * exp(-(((xs - (jj - 1) * x_pitch) * 0).^2 ...
+                        + ((ys - (ii - 1) * y_pitch) * 0).^2) / (w^2)) * exp(1i * Phi(ii, jj));
                 end
 
             end
@@ -93,7 +91,6 @@ for NN = 1:map_N
         x_pitch = y_pitch;
 
         for ii = 1:map_dim
-
 
             for jj = 1:map_dim
 
@@ -163,11 +160,11 @@ for NN = 1:map_N
         'AmbientStrength', 0.3), shading flat;
     axis([-theta_sim theta_sim -theta_sim theta_sim 0 1]); % setting axis limits
     set(gca, 'Visible', 'off', 'plotboxaspectratio', [1, 1, 3]);
-%     camva(3);
+    %     camva(3);
     grid off;
     view([0 90]);
-    figure;imagesc(angle(U_total_Phi))
-    
+    figure; imagesc(angle(U_total_Phi))
+
     % PLOT FAR FIELD
     Fig3 = figure(8 + column + fignum + 10); clf;
     set(Fig3, 'Position', [300 + 50 * (column - 1) 400 350 300]);
@@ -179,15 +176,13 @@ for NN = 1:map_N
     camva(3);
     grid off;
     view([0 90]);
-    
-    
-    
+
     % adding 10 degree circle and cut line
     hold on;
     x1 = 0:pi / 500:10;
     t = ones(1, length(x1));
-%     plot3(theta_circle * cos(x1), theta_circle * sin(x1), t, 'r', 'LineWidth', 2);
-%     text(0.8 * theta_circle, 0.8 * theta_circle, 1, [num2str(theta_circle), 'ÃƒÂ¯Ã‚Â¿Ã‚Â½'], 'Color', 'r', 'FontSize', fs);
+    %     plot3(theta_circle * cos(x1), theta_circle * sin(x1), t, 'r', 'LineWidth', 2);
+    %     text(0.8 * theta_circle, 0.8 * theta_circle, 1, [num2str(theta_circle), 'ÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¿Ãƒâ€šÃ‚Â½'], 'Color', 'r', 'FontSize', fs);
 
     if plot_cutline == 1   % plots line along slice angle
         plot3(0, 0, 1, '.k');
