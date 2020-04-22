@@ -11,8 +11,8 @@ loss = 0.02*k2;
 
 Nr = (Nd + 1)/4;
 F0 = sparse(zeros(Nr, Nr));
-E1 = sparse(fliplr(diag([k2  k1 loss loss])));
-E1_ = sparse(fliplr(diag([loss  loss k2 k1])));
+E1 = sparse(fliplr(diag([k2 loss loss loss loss k1])));
+E1_ = sparse(fliplr(diag([k2 loss loss loss loss k1])));
 E2 = sparse(fliplr(diag([loss loss loss loss])));
 E2_ = sparse(fliplr(diag([loss loss loss loss])));
 E3 = sparse(fliplr(diag([loss loss loss loss])));
