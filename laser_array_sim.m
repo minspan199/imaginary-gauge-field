@@ -182,7 +182,7 @@ for NN = 1:map_N
     x1 = 0:pi / 500:10;
     t = ones(1, length(x1));
     %     plot3(theta_circle * cos(x1), theta_circle * sin(x1), t, 'r', 'LineWidth', 2);
-    %     text(0.8 * theta_circle, 0.8 * theta_circle, 1, [num2str(theta_circle), 'ÃƒÆ’Ã‚Â¯Ãƒâ€šÃ‚Â¿Ãƒâ€šÃ‚Â½'], 'Color', 'r', 'FontSize', fs);
+    %     text(0.8 * theta_circle, 0.8 * theta_circle, 1, [num2str(theta_circle), 'ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¿ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½'], 'Color', 'r', 'FontSize', fs);
 
     if plot_cutline == 1   % plots line along slice angle
         plot3(0, 0, 1, '.k');
