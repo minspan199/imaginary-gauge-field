@@ -1,21 +1,26 @@
 clc
 clear all
 close all
-Nd = 65; 
+Nd = 35; 
 t = 1; 
 h = 0.02;
 k1 = exp(h); 
 k2 = exp(-h); 
 g = k1 - k2;
-loss = 0.02*k2;
+loss = 0.0*k2;
 
-Nr = (Nd + 1)/4;
+Nr = sqrt(Nd + 1);
 F0 = sparse(zeros(Nr, Nr));
 E1 = sparse(fliplr(diag([k2 loss loss loss loss k1])));
 E1_ = sparse(fliplr(diag([k2 loss loss loss loss k1])));
-E2 = sparse(fliplr(diag([loss loss loss loss])));
-E2_ = sparse(fliplr(diag([loss loss loss loss])));
-E3 = sparse(fliplr(diag([loss loss loss loss])));
+E2 = sparse(fliplr(diag([loss loss loss loss k2 k1])));
+E2_ = sparse(fliplr(diag([k2 k1 loss loss loss loss])));
+E3 = sparse(fliplr(diag([k2 loss loss loss loss k1])));
+E3_ = sparse(fliplr(diag([k2 loss loss loss loss k1])));
+E4 = sparse(fliplr(diag([loss loss loss loss k2 k1])));
+E4_ = sparse(fliplr(diag([k2 k1 loss loss loss loss])));
+E5 = sparse(fliplr(diag([k2 loss loss loss loss k1])));
+E5_ = sparse(fliplr(diag([k2 loss loss loss loss k1])));
 
 %%Loss is negative imaginary
 D1 = diag(-g*1i*[1 1 1 1 1 1]) + diag(k1*[1 1 1 1 1], 1) + diag(k2*[1 1 1 1 1], -1);
@@ -29,8 +34,8 @@ H = sparse([D1 E1 F0 F0 F0 F0;
             E1_ D2 E2 F0 F0 F0;
             F0 E2_ D3 E3 F0 F0;
             F0 F0 E3_ D4 E4 F0;
-            F0 F0 F0 E4_ D5 E4;
-            F0 F0 F0 F0 E4_ D6;
+            F0 F0 F0 E4_ D5 E5;
+            F0 F0 F0 F0 E5_ D6;
             ]);
 
 % H = sparse([D1 E1;
@@ -48,9 +53,9 @@ set(gcf, 'Position', [00, 00, 350, 300])
 % axis([0 Nd + 1 -2.5 2.5])
 set(gca,'FontSize', 14) % Font Size
 Lasing = find(imag(diag(V)) > 0);
-Lasing=3
+Lasing=18
 
-bn = 3
+bn = 18
 figure
 bar(angle(V(:,bn)),'b')
 hold on
