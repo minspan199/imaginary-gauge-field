@@ -139,7 +139,21 @@ for NN = 1:map_N
         'FaceLighting', 'phong', 'AmbientStrength', 0.3);
     shading flat;
     axis([x_ap_min x_ap_max y_ap_min y_ap_max]); % setting axis limits
+    
+   Fig2 = figure(3 + fignum);
 
+    if cleared == 1
+        clf;
+    end
+
+    set(Fig2, 'Position', [0 0 350 300]);
+    colormap(jet);
+    surf(xs * 10^6, -ys * 10^6, angle(U_ap_total), ...
+        'LineStyle', 'none', 'FaceColor', 'interp', ...
+        'FaceLighting', 'phong', 'AmbientStrength', 0.3);
+    shading flat;
+    axis([x_ap_min x_ap_max y_ap_min y_ap_max]); % setting axis limits
+    
     if sum(sum(abs(Phi))) > 1
         caxis([-1 1]);
     else
