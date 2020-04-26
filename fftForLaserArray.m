@@ -7,7 +7,7 @@ radiumOfPixel = 10e-6;
 spotSize = 5e-6;
 xNum = 6;
 yNum = 6;
-N = 2500; %number of pixels in each dimension (determines fidelity and processing time)
+N = 2000; %number of pixels in each dimension (determines fidelity and processing time)
 
 
 % Amp = zeros(xNum,yNum);
@@ -26,7 +26,7 @@ AmpPhase = [1.570796327	3.141592654	-1.570796327	-4.21E-15	1.570796327	3.1415926
 2.15E-16	-1.570796327	3.141592654	1.570796327	-2.92E-15	-1.570796327
 ];
 
-dx = 300e-9; %width of each pixel ???
+dx = 500e-9; %width of each pixel ???
 xN = xNum*radiumOfPixel*2;
 yN = yNum*radiumOfPixel*2;
 screenSize = N*dx;
@@ -100,17 +100,17 @@ view([0 90]);
 axis on
 
 figure;
-imagesc(angleX_Min, -angleY_Min, angle(farFieldNormalizedIntensity));
-axis([-theta_sim theta_sim -theta_sim theta_sim]);
+imagesc(angle(farFieldNormalizedIntensity));
+% axis([-theta_sim theta_sim -theta_sim theta_sim]);
 
 AmpIFFT = fftshift(ifft2(fftshift(farField))); %Near Field
-bearFieldsIFFT = exp(1i*k*z)*exp(1i*k*(xsNear.^2+ysNear.^2)/(2*z)).*AmpIFFT/(1i*lambda*z);
+nearFieldsIFFT = exp(1i*k*z)*exp(1i*k*(xsNear.^2+ysNear.^2)/(2*z)).*AmpIFFT/(1i*lambda*z);
 
 figure;
-imagesc(abs(AmpIFFT))
+imagesc(abs(nearFieldsIFFT))
 
 figure;
-imagesc(angle(AmpIFFT))
+imagesc(angle(nearFieldsIFFT))
 
 
 function [ind1, ind2] = getInd(loopNum, size)
