@@ -14,9 +14,9 @@ imgFar = imgFar.astype(float)
 imgFar = np.asarray(imgFar, float)
 
 max_iters = 200
-phase_far, phase_near = Ger_Sax_algo(imgNear, imgFar, max_iters)
+phase_far, phase_near = Ger_Sax_algo2(imgFar, max_iters)
 
-original = imgNear*np.exp(phase_near * 1j)
+original = np.exp(phase_near * 1j)
 recovery = np.fft.fft2(original)
 recoveryIntensity = np.absolute(recovery) ** 2
 
