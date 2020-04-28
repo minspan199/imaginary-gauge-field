@@ -37,27 +37,91 @@ k = 2 * pi / lambda;
 [N, M] = size(AmpImage); % Image plane discretization size
 E_Sample = zeros(N, M); % initial an array to store sample image for calculation
 
-for ii = 1:N
+E_Sample = supperposition(E_Sample);
 
-    for jj = 1:M
+E_Sample = normalize(E_Sample);
 
-        E_Sample = E_Sample + Green(ii, jj);
-    end
-
-end
-
-% E_Sample = normalize(E_Sample);
 figure;
-imagesc(abs(E_Sample));
+imagesc(abs(E_Sample), [0.5 1]);
 colormap jet
 colorbar
-title('Sample Plane Intensity')
+title('Sample Plane Amplitude')
 
 figure;
 imagesc(angle(E_Sample));
 colormap jet
 colorbar
 title('Sample Plane Phase')
+
+E_Sample_Intensity = (abs(E_Sample)).^2;
+E_Sample_Intensity = Binarize(E_Sample_Intensity);
+figure;
+imagesc(E_Sample_Intensity);
+colormap jet
+colorbar
+title('Sample Plane Intensity')
+
+E_Sample_Phase = quantizePhase(angle(E_Sample));
+figure;
+imagesc(E_Sample_Phase);
+colormap jet;
+colorbar;
+title('Sample Plane Intensity');
+
+E_Sample_recovered = E_Sample_Intensity .* exp(-1i * E_Sample_Phase);
+
+function E_Sample = supperposition(E_Sample)
+
+    for ii = 1:N
+
+        for jj = 1:M
+
+            E_Sample = E_Sample + Green(ii, jj);
+        end
+
+    end
+
+end
+
+function quantizedPhase = quantizePhase(Array)
+
+    [M, N] = size(Array);
+    quantized = [-pi, -pi / 2, 0, pi / 2, pi]; % four level quantization
+
+    for ii = 1:M
+
+        for jj = 1:N
+            [~, idx] = min(abs(quantized - Array(ii, jj)));
+            Array(ii, jj) = quantized(idx);
+
+        end
+
+    end
+
+    quantizedPhase = Array;
+end
+
+function BinarizedArray = Binarize(Array)
+
+    [M, N] = size(Array);
+
+    for ii = 1:M
+
+        for jj = 1:N
+
+            if (Array(ii, jj) >= 0.25)% half amplitude
+                Array(ii, jj) = 1;
+            else
+                Array(ii, jj) = 0;
+            end
+
+        end
+
+    end
+
+    BinarizedArray = Array;
+
+end
 
 function E_Sample = Green(coordImageX, coordImageY)
 
@@ -84,13 +148,12 @@ function E_Sample = Green(coordImageX, coordImageY)
 end
 
 function normalizedIntensity = normalize(Original)
-    [N, M] = size(Original);
-    normalizedIntensity = zeros(N, M);
+    [M, N] = size(Original);
     Emax = max(max(abs(Original)));
 
-    for ii = 1:N
+    for ii = 1:M
 
-        for jj = 1:M
+        for jj = 1:N
 
             Original(ii, jj) = Original(ii, jj) / Emax;
 
