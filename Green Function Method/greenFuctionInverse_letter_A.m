@@ -29,15 +29,17 @@ AmpImage = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
 
         ];
 
-PhaseImage = 2 * pi * (rand(20, 20) - 0.5);
-AmpImage = AmpImage .* exp(1i * PhaseImage);
+PhaseImage = (rand(20, 20) - 0.5);
+% AmpImage = AmpImage .* exp(1i * PhaseImage);
 figure;
-imagesc(AmpImage);
+imagesc(abs(AmpImage));
 colormap gray
 colorbar
+set(gcf, 'Position', [00, 00, 350, 300])
+set(gca,'FontSize', 10) % Font Size
 title('Image Plane(desired pattern)')
 
-dW = 10e-6; %Spacing between elements
+dW = 20e-6; %Spacing between elements
 z = 50e-6; % Distance of Image plane from the resonator plane
 
 lambda = 1.550e-6;
