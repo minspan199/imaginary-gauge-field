@@ -58,15 +58,15 @@ colormap gray
 colorbar
 title('Image Plane(desired pattern)')
 
-dW = 20e-6; %Spacing between elements
-z = 100e-6; % Distance of Image plane from the resonator plane
+dW = 10e-6; %Spacing between elements
+z = 50e-6; % Distance of Image plane from the resonator plane
 
 lambda = 1.550e-6;
 k = 2 * pi / lambda;
 [N, M] = size(AmpImage); % Image plane discretization size
 E_Sample = zeros(N, M); % initial an array to store sample image for calculation
 
-E_Sample = supperposition(E_Sample);
+E_Sample = HelperClass.supperposition(E_Sample);
 
 E_Sample = normalize(E_Sample);
 
@@ -88,7 +88,7 @@ figure;
 imagesc(E_Sample_Intensity);
 colormap jet
 colorbar
-title('Sample Plane Intensity')
+title('Sample Plane Intensity (Binarized)')
 
 E_Sample_Phase = quantizePhase(angle(E_Sample));
 % E_Sample_Phase = (angle(E_Sample));
@@ -126,6 +126,7 @@ function quantizedPhase = quantizePhase(Array)
 
     [M, N] = size(Array);
     quantized = [-pi, -pi / 2, 0, pi / 2, pi]; % four level quantization
+% quantized = [-pi,-3*pi / 4 -pi / 2, -pi / 4, 0, pi / 4, pi / 2,3*pi / 4 pi]; % eight level quantization
 
     for ii = 1:M
 
