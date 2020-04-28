@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4eb31f9b-4bea-4cf8-88f0-50f0a626f4d4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../A_Far.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../phase_retrieval_GS.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LetterACompressed.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LetterACompressed2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../matrix_downsize.asv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../matrix_downsize.m" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,22 +120,22 @@
       <screen x="64" y="0" width="1472" height="864" />
     </state>
     <state x="481" y="168" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/64.0.1472.864@64.0.1472.864" timestamp="1587930039257" />
-    <state width="1451" height="251" key="GridCell.Tab.0.bottom" timestamp="1587932275519">
+    <state width="1451" height="251" key="GridCell.Tab.0.bottom" timestamp="1588032789562">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state width="1451" height="251" key="GridCell.Tab.0.bottom/64.0.1472.864@64.0.1472.864" timestamp="1587932275519" />
-    <state width="1451" height="251" key="GridCell.Tab.0.center" timestamp="1587932275518">
+    <state width="1451" height="251" key="GridCell.Tab.0.bottom/64.0.1472.864@64.0.1472.864" timestamp="1588032789562" />
+    <state width="1451" height="251" key="GridCell.Tab.0.center" timestamp="1588032789561">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state width="1451" height="251" key="GridCell.Tab.0.center/64.0.1472.864@64.0.1472.864" timestamp="1587932275518" />
-    <state width="1451" height="251" key="GridCell.Tab.0.left" timestamp="1587932275518">
+    <state width="1451" height="251" key="GridCell.Tab.0.center/64.0.1472.864@64.0.1472.864" timestamp="1588032789561" />
+    <state width="1451" height="251" key="GridCell.Tab.0.left" timestamp="1588032789561">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state width="1451" height="251" key="GridCell.Tab.0.left/64.0.1472.864@64.0.1472.864" timestamp="1587932275518" />
-    <state width="1451" height="251" key="GridCell.Tab.0.right" timestamp="1587932275518">
+    <state width="1451" height="251" key="GridCell.Tab.0.left/64.0.1472.864@64.0.1472.864" timestamp="1588032789561" />
+    <state width="1451" height="251" key="GridCell.Tab.0.right" timestamp="1588032789562">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state width="1451" height="251" key="GridCell.Tab.0.right/64.0.1472.864@64.0.1472.864" timestamp="1587932275518" />
+    <state width="1451" height="251" key="GridCell.Tab.0.right/64.0.1472.864@64.0.1472.864" timestamp="1588032789562" />
     <state x="195" y="72" key="SettingsEditor" timestamp="1587912535161">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
