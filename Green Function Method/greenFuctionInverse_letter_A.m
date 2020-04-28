@@ -35,8 +35,6 @@ figure;
 imagesc(abs(AmpImage));
 colormap gray
 colorbar
-set(gcf, 'Position', [00, 00, 350, 300])
-set(gca,'FontSize', 10) % Font Size
 title('Image Plane(desired pattern)')
 
 dW = 20e-6; %Spacing between elements
