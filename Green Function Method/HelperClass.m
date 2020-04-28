@@ -1,10 +1,6 @@
 classdef HelperClass
 
-    properties
-        Value {1}
-    end
-
-    methods
+    methods (Static)
 
         function E_Sample = supperposition(E_Sample)
 
@@ -14,7 +10,7 @@ classdef HelperClass
 
                 for jj = 1:N
 
-                    E_Sample = E_Sample + Green(ii, jj);
+                    E_Sample = E_Sample + HelperClass.Green(ii, jj);
                 end
 
             end
