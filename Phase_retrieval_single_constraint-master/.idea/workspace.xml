@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4eb31f9b-4bea-4cf8-88f0-50f0a626f4d4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/../LetterACompressed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../LetterACompressed2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../matrix_downsize.asv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../matrix_downsize.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../FFT Far Field.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../FFT Far Field.pptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Green Function Method/greenFuctionInverse_letter_A.m" beforeDir="false" afterPath="$PROJECT_DIR$/../Green Function Method/greenFuctionInverse_letter_A.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Green Function Method/hologram_green_function.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../Green Function Method/hologram_green_function.pptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Green Function Method/pattern_code_far_field.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Green Function Method/pattern_code_far_field.xlsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +72,9 @@
       <module name="Phase_retrieval_single_constraint" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
@@ -120,6 +123,10 @@
       <screen x="64" y="0" width="1472" height="864" />
     </state>
     <state x="481" y="168" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/64.0.1472.864@64.0.1472.864" timestamp="1587930039257" />
+    <state x="580" y="173" key="FileChooserDialogImpl" timestamp="1588380987410">
+      <screen x="64" y="0" width="1472" height="864" />
+    </state>
+    <state x="580" y="173" key="FileChooserDialogImpl/64.0.1472.864@64.0.1472.864" timestamp="1588380987410" />
     <state width="1451" height="251" key="GridCell.Tab.0.bottom" timestamp="1588032789562">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
