@@ -14,7 +14,7 @@ imgFar = cv2.imread('letterA3.png', cv2.IMREAD_GRAYSCALE)
 imgFar = imgFar.astype(float)
 imgFar = np.asarray(imgFar, float)
 
-max_iters = 2000
+max_iters = 5000
 phase_far, phase_near = Ger_Sax_algo2(imgFar, max_iters)
 
 original = np.exp(phase_near * 1j)
@@ -41,4 +41,5 @@ plt.title('Phase Near Field')
 
 plt.show()
 
-sio.savemat('20by20_letterA3.mat', {'recovered': recovery, 'original': original})
+sio.savemat('20by20_letterA3.mat', {
+            'recovered': recovery, 'original': original})

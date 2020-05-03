@@ -1,4 +1,4 @@
-% close all% Comment this line if you have other figures that you dont want close in Matlab
+close all% Comment this line if you have other figures that you dont want close in Matlab
 
 N = 20;
 %% A letter map
@@ -79,9 +79,9 @@ colormap autumn
 colorbar
 title('Laser Array Intensity Distribution')
 
-phase = HelperClass.quantizePhase(angle(original));
+phase = HelperClass.quantizePhase2(angle(original));
 figure
-imagesc(phase);
+imagesc(phase, [-pi pi]);
 set(gcf,  'Position', [00, 00, 350, 300])
 set(gca,  'FontSize', 10)% Font Size
 colormap jet
@@ -95,8 +95,8 @@ nearField = abs(original) .* (exp(1i * phase));
 Angular_Spectrum = (fft2(fftshift(original))); %Near Field
 figure
 imagesc(abs(Angular_Spectrum).^2);
-set(gcf,  'Position', [00, 00, 350, 300])
-set(gca,  'FontSize', 10)% Font Size
+set(gcf, 'Position', [00, 00, 350, 300])
+set(gca, 'FontSize', 10)% Font Size
 colormap jet
 colorbar
 title('Recovered Far Field Image')

@@ -2,10 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4eb31f9b-4bea-4cf8-88f0-50f0a626f4d4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../FFT Far Field.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../FFT Far Field.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Green Function Method/greenFuctionInverse_letter_A.m" beforeDir="false" afterPath="$PROJECT_DIR$/../Green Function Method/greenFuctionInverse_letter_A.m" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Green Function Method/hologram_green_function.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../Green Function Method/hologram_green_function.pptx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Green Function Method/pattern_code_far_field.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Green Function Method/pattern_code_far_field.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/HelperClass.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/binaryGenerator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/csgs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/demo_main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/demo_main2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/demo_main_letterA.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/demo_main_letterB.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/demo_main_letterC.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/images.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/letterA3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/letterB3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/letterC3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/phase_generation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/phase_retrieval_GS.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/phase_retrieval_GS2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/phase_retrieval_GS3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../G-S_phase_retrieve/plotForPythonDSAlgorithm.asv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/.idea/directionalPhase.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../directionalPhase/plotForPythonDSAlgorithm.m" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,12 +63,40 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../G-S_phase_retrieve" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager" selected="Python.demo_main">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Google Drive\Non-Hermitian Gauge Field\non-hermitian-gauge-field\Phase_retrieval_single_constraint-master\directionalPhase" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.demo_main_letterA">
+    <configuration name="csgs" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Phase_retrieval_single_constraint" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/csgs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="demo_main (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Phase_retrieval_single_constraint" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -89,13 +139,53 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="demo_main_letterA" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Phase_retrieval_single_constraint" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/demo_main_letterA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="recover_letterA" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Phase_retrieval_single_constraint" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/directionalPhase" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/directionalPhase/recover_letterA.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.demo_main" />
-        <item itemvalue="Python.demo_main" />
-        <item itemvalue="Python.demo_main" />
-        <item itemvalue="Python.demo_main" />
-        <item itemvalue="Python.demo_main" />
+        <item itemvalue="Python.demo_main_letterA" />
+        <item itemvalue="Python.recover_letterA" />
+        <item itemvalue="Python.recover_letterA" />
       </list>
     </recent_temporary>
   </component>
@@ -123,26 +213,26 @@
       <screen x="64" y="0" width="1472" height="864" />
     </state>
     <state x="481" y="168" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/64.0.1472.864@64.0.1472.864" timestamp="1587930039257" />
-    <state x="580" y="173" key="FileChooserDialogImpl" timestamp="1588380987410">
+    <state x="580" y="173" key="FileChooserDialogImpl" timestamp="1588526329732">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state x="580" y="173" key="FileChooserDialogImpl/64.0.1472.864@64.0.1472.864" timestamp="1588380987410" />
-    <state width="1451" height="251" key="GridCell.Tab.0.bottom" timestamp="1588032789562">
+    <state x="580" y="173" key="FileChooserDialogImpl/64.0.1472.864@64.0.1472.864" timestamp="1588526329732" />
+    <state width="1451" height="251" key="GridCell.Tab.0.bottom" timestamp="1588526332778">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state width="1451" height="251" key="GridCell.Tab.0.bottom/64.0.1472.864@64.0.1472.864" timestamp="1588032789562" />
-    <state width="1451" height="251" key="GridCell.Tab.0.center" timestamp="1588032789561">
+    <state width="1451" height="251" key="GridCell.Tab.0.bottom/64.0.1472.864@64.0.1472.864" timestamp="1588526332778" />
+    <state width="1451" height="251" key="GridCell.Tab.0.center" timestamp="1588526332778">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state width="1451" height="251" key="GridCell.Tab.0.center/64.0.1472.864@64.0.1472.864" timestamp="1588032789561" />
-    <state width="1451" height="251" key="GridCell.Tab.0.left" timestamp="1588032789561">
+    <state width="1451" height="251" key="GridCell.Tab.0.center/64.0.1472.864@64.0.1472.864" timestamp="1588526332778" />
+    <state width="1451" height="251" key="GridCell.Tab.0.left" timestamp="1588526332778">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state width="1451" height="251" key="GridCell.Tab.0.left/64.0.1472.864@64.0.1472.864" timestamp="1588032789561" />
-    <state width="1451" height="251" key="GridCell.Tab.0.right" timestamp="1588032789562">
+    <state width="1451" height="251" key="GridCell.Tab.0.left/64.0.1472.864@64.0.1472.864" timestamp="1588526332778" />
+    <state width="1451" height="251" key="GridCell.Tab.0.right" timestamp="1588526332778">
       <screen x="64" y="0" width="1472" height="864" />
     </state>
-    <state width="1451" height="251" key="GridCell.Tab.0.right/64.0.1472.864@64.0.1472.864" timestamp="1588032789562" />
+    <state width="1451" height="251" key="GridCell.Tab.0.right/64.0.1472.864@64.0.1472.864" timestamp="1588526332778" />
     <state x="195" y="72" key="SettingsEditor" timestamp="1587912535161">
       <screen x="64" y="0" width="1472" height="864" />
     </state>

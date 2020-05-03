@@ -1,23 +1,22 @@
 import cv2
-
+from phase_retrieval_GS import *
+from phase_retrieval_GS2 import *
 import matplotlib.pyplot as plt
 import numpy as np
 import scipy.io as sio
 
-from phase_retrieval_GS2 import gerSaxAlgo2
+imgNear = cv2.imread("A_Near.png", cv2.IMREAD_GRAYSCALE)
+imgNear = imgNear.astype(float)
+imgNear = np.asarray(imgNear, float)
 
-# imgNear = cv2.imread("A_Near.png", cv2.IMREAD_GRAYSCALE)
-# imgNear = imgNear.astype(float)
-# imgNear = np.asarray(imgNear, float)
-
-imgFar = cv2.imread('letterB3.png', cv2.IMREAD_GRAYSCALE)
+imgFar = cv2.imread('A_Far.png', cv2.IMREAD_GRAYSCALE)
 imgFar = imgFar.astype(float)
 imgFar = np.asarray(imgFar, float)
 
-max_iters = 2000
-phase_far, phase_near = gerSaxAlgo2(imgFar, max_iters)
+max_iters = 200
+phase_far, phase_near = Ger_Sax_algo(imgNear, imgFar, max_iters)
 
-original = np.exp(phase_near * 1j)
+original = imgNear*np.exp(phase_near * 1j)
 recovery = np.fft.fft2(original)
 recoveryIntensity = np.absolute(recovery) ** 2
 
@@ -41,4 +40,4 @@ plt.title('Phase Near Field')
 
 plt.show()
 
-sio.savemat('20by20_letterB3.mat', {'recovered': recovery, 'original': original})
+sio.savemat('6by6_500.mat', {'recovered': recovery, 'original': original})
