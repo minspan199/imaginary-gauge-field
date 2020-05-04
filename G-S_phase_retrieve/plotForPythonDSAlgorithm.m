@@ -79,7 +79,7 @@ colormap autumn
 colorbar
 title('Laser Array Intensity Distribution')
 
-phase = HelperClass.quantizePhase2(angle(original));
+phase = HelperClass.quantizePhase4(angle(original));
 figure
 imagesc(phase, [-pi pi]);
 set(gcf,  'Position', [00, 00, 350, 300])
@@ -102,16 +102,16 @@ colorbar
 title('Recovered Far Field Image')
 
 %% 
-
-dX = phase - [phase(:, 2:N) zeros(N, 1)];
-dY = phase - [phase(2:N, :); zeros(1, N)];
-
-figure;
-imagesc(dX, [-pi pi])
-colormap jet
-colorbar
-
-figure
-imagesc(dY, [-pi pi])
-colormap jet
-colorbar
+% 
+% dX = phase - [phase(:, 2:N) zeros(N, 1)];
+% dY = phase - [phase(2:N, :); zeros(1, N)];
+% 
+% figure;
+% imagesc(dX, [-pi pi])
+% colormap jet
+% colorbar
+% 
+% figure
+% imagesc(dY, [-pi pi])
+% colormap jet
+% colorbar
