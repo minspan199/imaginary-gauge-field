@@ -10,13 +10,13 @@ from phase_retrieval_GS2 import Ger_Sax_algo2
 # imgNear = imgNear.astype(float)
 # imgNear = np.asarray(imgNear, float)
 
-imgFar = cv2.imread('bar_8by8.png', cv2.IMREAD_GRAYSCALE)
+imgFar = cv2.imread('bar_10by10.png', cv2.IMREAD_GRAYSCALE)
 imgFar = imgFar.astype(float)
 imgFar = np.asarray(imgFar, float)
 
-max_iters = 10000
+max_iters = 100000
 
-x = sio.loadmat('bar_8by8_raw.mat')
+x = sio.loadmat('imageNear_grids.mat')
 imageNear = x['IntensityNear']
 
 phase_far, phase_near = Ger_Sax_algo2(imgFar, imageNear, max_iters)
@@ -25,7 +25,7 @@ original = imageNear*np.exp(phase_near * 1j)
 recovery = np.fft.fft2(original)
 recoveryIntensity = np.absolute(recovery) ** 2
 
-sio.savemat('bar_8by8_processed.mat', {
+sio.savemat('bar_10by10_processed.mat', {
             'recovered': recovery, 'original': original})
 
 plt.figure(1)

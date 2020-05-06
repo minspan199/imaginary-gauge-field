@@ -10,9 +10,18 @@ colorbar
 title('Laser Array Intensity Distribution')
 
 
-phase = HelperClass.quantizePhase4(angle(original));
+phase = HelperClass.quantizePhase3(angle(original));
 % phase(1:5:N, :) = 0;
 % phase(:, 1:5:N) = 0;
+
+figure
+imagesc(angle(original), [-pi pi]);
+set(gcf,  'Position', [00, 00, 350, 300])
+set(gca,  'FontSize', 10)% Font Size
+colormap jet
+colorbar
+title('Laser Array Phase Distribution')
+
 figure
 imagesc(phase, [-pi pi]);
 set(gcf,  'Position', [00, 00, 350, 300])
@@ -27,7 +36,7 @@ title('Laser Array Quantized Phase Distribution')
 
 nearField = abs(original) .* (exp(1i * phase));
 
-Angular_Spectrum = (fft2(fftshift(nearField))); %Near Field
+Angular_Spectrum = (fft2(fftshift(original))); %Near Field
 
 figure
 imagesc(abs(Angular_Spectrum).^2);
