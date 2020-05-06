@@ -52,7 +52,7 @@ figure;
 imagesc(bar10by10, [0, 1]);
 set(gcf, 'Position', [00, 00, 350, 300])
 set(gca, 'FontSize', 10)% Font Size
-colormap autumn
+colormap gray
 colorbar
 title('Desired Far Field Image');
 
