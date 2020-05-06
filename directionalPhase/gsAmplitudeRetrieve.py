@@ -6,7 +6,7 @@ def iterGerchbergSaxton2(img, phase_near, max_iter):
     pm_s = phase_near  # angle near
     pm_f = np.random.rand(h, w)  # angle far
     am_f = np.sqrt(img)  # amplitude far
-    am_s = np.ones((h, w))  # amplitude near
+    am_s = np.random.rand(h, w)  # amplitude near
 
     signal_s = am_s * np.exp(pm_s * 1j)
 
@@ -22,4 +22,4 @@ def iterGerchbergSaxton2(img, phase_near, max_iter):
         # pm_s = phase_geNumumerator(pm_s, 6)
         signal_s = am_s * np.exp(pm_s * 1j)
 
-    return am_s, pm_f
+    return am_s

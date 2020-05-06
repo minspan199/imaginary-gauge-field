@@ -4,24 +4,19 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.io as sio
 
-from phase_retrieval_GS2 import Ger_Sax_algo2
+from gsAmplitudeRetrieve import iterGerchbergSaxton2
 
-# imgNear = cv2.imread("A_Near.png", cv2.IMREAD_GRAYSCALE)
-# imgNear = imgNear.astype(float)
-# imgNear = np.asarray(imgNear, float)
-
-imgFar = cv2.imread('letterA3_21by21.png', cv2.IMREAD_GRAYSCALE)
+imgFar = cv2.imread('bar_10by10.png', cv2.IMREAD_GRAYSCALE)
 imgFar = imgFar.astype(float)
 imgFar = np.asarray(imgFar, float)
 
-max_iters = 10000
+max_iters = 500000
 
-x = sio.loadmat('imageNear_uniform.mat')
-imageNear = x['IntensityNear']
+x = sio.loadmat('Phase.mat')
+phase_near = x['Phase']
+amp_far = iterGerchbergSaxton2(imgFar, phase_near, max_iters)
 
-phase_far, phase_near = Ger_Sax_algo2(imgFar, imageNear, max_iters)
-
-original = imageNear*np.exp(phase_near * 1j)
+original = amp_far*np.exp(phase_near * 1j)
 recovery = np.fft.fft2(original)
 recoveryIntensity = np.absolute(recovery) ** 2
 
@@ -32,7 +27,7 @@ plt.imshow(recoveryIntensity)
 plt.title('Desired image')
 
 plt.subplot(224)
-plt.imshow(phase_far)
+# plt.imshow(phase_far)
 plt.title('Phase Far Field')
 
 plt.subplot(221)
@@ -45,5 +40,5 @@ plt.title('Phase Near Field')
 
 plt.show()
 
-sio.savemat('20by20_letterA3_uniform.mat', {
+sio.savemat('20by20_letterA3_amp.mat', {
             'recovered': recovery, 'original': original})
