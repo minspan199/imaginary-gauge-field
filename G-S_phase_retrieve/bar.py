@@ -10,7 +10,7 @@ from phase_retrieval_GS2 import Ger_Sax_algo2
 # imgNear = imgNear.astype(float)
 # imgNear = np.asarray(imgNear, float)
 
-imgFar = cv2.imread('bar_10by10.png', cv2.IMREAD_GRAYSCALE)
+imgFar = cv2.imread('horizontal_bar_10by10.png', cv2.IMREAD_GRAYSCALE)
 imgFar = imgFar.astype(float)
 imgFar = np.asarray(imgFar, float)
 

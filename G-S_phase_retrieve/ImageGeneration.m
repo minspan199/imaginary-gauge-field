@@ -1,5 +1,5 @@
 
-bar12by12 = [0	0	0	0	0	0	0	0	0	0	0	0
+vertical_bar12by12 = [0	0	0	0	0	0	0	0	0	0	0	0
 0	0	0	0	0	0	0	0	0	0	0	0
 0	0	0	0	0	0	0	0	0	0	0	0
 0	0	0	0	0	0	0	0	0	0	0	0
@@ -13,7 +13,7 @@ bar12by12 = [0	0	0	0	0	0	0	0	0	0	0	0
 0	0	0	0	0	0	0	0	0	0	0	0
 ];
 
-bar10by10 = [0	0	0	0	0	0	0	0	0	0
+vertical_bar10by10 = [0	0	0	0	0	0	0	0	0	0
 0	0	0	0	0	0	0	0	0	0
 0	0	0	0	0	0	0	0	0	0
 0	0	0	0	1	0	0	0	0	0
@@ -25,7 +25,7 @@ bar10by10 = [0	0	0	0	0	0	0	0	0	0
 0	0	0	0	0	0	0	0	0	0
 ];
 
-bar8by8 = [0	0	0	0	0	0	0	0
+vertical_bar8by8 = [0	0	0	0	0	0	0	0
 0	0	0	1	0	0	0	0
 0	0	0	1	0	0	0	0
 0	0	0	1	0	0	0	0
@@ -48,15 +48,27 @@ circle1 = [1	1	0	0	0	0	0	0	0	0
 0	0	0	0	0	0	0	0	0	0
 ];
 
+horizontal_bar10by10 = [0	0	0	0	0	0	0	0	0	0
+0	0	0	0	0	0	0	0	0	0
+0	0	0	0	0	0	0	0	0	0
+0	0	0	0	0	0	0	0	0	0
+0	0	0	0	0	0	0	0	0	0
+0	0	0	1	1	1	1	0	0	0
+0	0	0	0	0	0	0	0	0	0
+0	0	0	0	0	0	0	0	0	0
+0	0	0	0	0	0	0	0	0	0
+0	0	0	0	0	0	0	0	0	0
+];
+
 figure;
-imagesc(bar10by10, [0, 1]);
+imagesc(horizontal_bar10by10, [0, 1]);
 set(gcf, 'Position', [00, 00, 350, 300])
 set(gca, 'FontSize', 10)% Font Size
 colormap gray
 colorbar
 title('Desired Far Field Image');
 
-imwrite(bar10by10, 'bar_10by10.png');
+imwrite(horizontal_bar10by10, 'horizontal_bar_10by10.png');
 
 IntensityNear = ones(8, 8);
 save('bar_8by8_raw.mat','IntensityNear');

@@ -73,9 +73,9 @@ colormap autumn
 colorbar
 title('Laser Array Intensity Distribution')
 
-phase = (angle(original));
+phase = HelperClass.quantizePhase3(angle(original));
 figure
-imagesc(phase);
+imagesc(phase, [-pi, pi]);
 set(gcf,  'Position', [00, 00, 350, 300])
 set(gca,  'FontSize', 10)% Font Size
 colormap jet
