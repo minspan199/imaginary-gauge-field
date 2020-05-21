@@ -6,9 +6,9 @@ global lambda k AmpImage N M dW z;
 
 % Data of Amplitude on the Image Plane
 AmpImage = [0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0
         0 0 0 0 1 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 0
+        0 0 0 1 1 1 0 0 0 0
+        0 0 0 0 1 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0
@@ -42,7 +42,7 @@ AmpImage = [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-        0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0
+        0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
         0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
@@ -56,7 +56,7 @@ colorbar
 title('Image Plane(desired pattern)')
 
 dW = 10e-6; %Spacing between elements
-z = 50e-6; % Distance of Image plane from the resonator plane
+z = 100e-6; % Distance of Image plane from the resonator plane
 
 lambda = 1.550e-6;
 k = 2 * pi / lambda;
