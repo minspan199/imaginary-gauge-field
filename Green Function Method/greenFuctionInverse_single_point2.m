@@ -9,8 +9,7 @@ global lambda k AmpImage N M dW z;
 % Data of Amplitude on the Image Plane
 %80 by 80 lasers
 AmpImage = zeros(100, 100);
-AmpImage(30, 50) = 1;
-AmpImage(70, 50) = 1;
+AmpImage(50, 50) = 1;
 
 % PhaseImage = (rand(20, 20) - 0.5);
 % AmpImage = AmpImage .* exp(1i * PhaseImage);
