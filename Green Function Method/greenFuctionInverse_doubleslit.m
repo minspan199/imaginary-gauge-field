@@ -126,7 +126,7 @@ function quantizedPhase = quantizePhase(Array)
 
     [M, N] = size(Array);
     quantized = [-pi, -pi / 2, 0, pi / 2, pi]; % four level quantization
-% quantized = [-pi,-3*pi / 4 -pi / 2, -pi / 4, 0, pi / 4, pi / 2,3*pi / 4 pi]; % eight level quantization
+    % quantized = [-pi,-3*pi / 4 -pi / 2, -pi / 4, 0, pi / 4, pi / 2,3*pi / 4 pi]; % eight level quantization
 
     for ii = 1:M
 
