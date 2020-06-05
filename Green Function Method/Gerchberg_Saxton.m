@@ -24,7 +24,7 @@ set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 12) % Font Size
 
 %% Sample image initial state (sample plane)
-A_sample = zeros(N, N); % initial an array to store sample image for calculation
+A_sample = ones(N, N); % initial an array to store sample image for calculation
 A_sample(1, :) = 1;
 A_sample(N, :) = 1;
 A_sample(:, 1) = 1;
@@ -41,18 +41,19 @@ set(gca,'FontSize', 12) % Font Size
 %% Gerchberg-Saxton iteration
 
 E_sample = A_sample;
+E_virtual = A_virtual.*exp(2*pi*1i*(rand(N,N)-0.5));
 
-iter = 1000;
+iter = 100;
 
 while iter > 0
+    
+    E_sample2 = HologramHelperClass.supperposition((E_virtual));
+    
+    E_sample = A_sample*angle(E_sample2);
     
     E_holo = HologramHelperClass.supperposition(conj(E_sample));
     
     E_virtual = A_virtual*angle(E_holo);
-    
-    E_sample2 = HologramHelperClass.supperposition((E_virtual));
-    
-    E_sample = A_virtual*angle(E_sample2);
     
     iter = iter - 1; 
     
@@ -61,7 +62,7 @@ while iter > 0
 end
 
 %% After iteration
-E_virtual = HologramHelperClass.supperposition(conj(A_sample));
+E_virtual = HologramHelperClass.supperposition(conj(E_sample));
 
 figure;
 imagesc(abs(E_virtual));
@@ -70,3 +71,47 @@ colorbar
 title('Image Plane(recovered pattern)')
 set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 12) % Font Size
+
+figure;
+imagesc(angle(E_virtual));
+colormap gray
+colorbar
+title('Image Plane(recovered pattern)')
+set(gcf, 'Position', [00, 00, 350, 300])
+set(gca,'FontSize', 12) % Font Size
+
+
+%Test
+% 
+% E1 = HologramHelperClass.supperposition((A_virtual));
+%     
+% E2 = HologramHelperClass.supperposition(conj(E1));
+%     
+% figure;
+% subplot(1,2,1)
+% imagesc(abs(E2));
+% colormap gray
+% colorbar
+% title('Image Plane(recovered pattern)')
+% set(gca,'FontSize', 12) % Font Size
+% subplot(1,2,2)
+% imagesc(abs(A_virtual));
+% colormap gray
+% colorbar
+% title('Image Plane(desired pattern)')
+% set(gca,'FontSize', 12) % Font Size
+% 
+% figure;
+% subplot(1,2,1)
+% imagesc(abs(E1));
+% colormap gray
+% colorbar
+% title('Image Plane(recovered pattern)')
+% set(gca,'FontSize', 12) % Font Size
+% subplot(1,2,2)
+% imagesc(angle(E1));
+% colormap gray
+% colorbar
+% title('Image Plane(desired pattern)')
+% set(gca,'FontSize', 12) % Font Size
+% 
