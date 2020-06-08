@@ -61,6 +61,49 @@ classdef HologramHelperClass
 
             normalizedIntensity = Original;
         end
+        
+        
+        function quantizedAmp = quantizeAmp(E, threshold)
+
+            [M, N] = size(E);
+            E = abs(E);
+            
+            for ii = 1:M
+
+                for jj = 1:N
+
+                    if(E(ii, jj) > 0.5)
+                        E(ii, jj) = 1;
+                    else
+                        E(ii, jj) = 0;
+                    end
+
+                end
+
+            end
+
+            quantizedAmp = E;
+        end
+        
+        
+        function quantizedPhase = quantizePhase4(Array)
+
+            [M, N] = size(Array);
+            quantized = [-pi, -pi / 2, 0, pi / 2, pi]; % four level quantization
+            % quantized = [-pi,-3*pi / 4 -pi / 2, -pi / 4, 0, pi / 4, pi / 2,3*pi / 4 pi]; % eight level quantization
+
+            for ii = 1:M
+
+                for jj = 1:N
+                    [~, idx] = min(abs(quantized - Array(ii, jj)));
+                    Array(ii, jj) = quantized(idx);
+
+                end
+
+            end
+
+            quantizedPhase = Array;
+        end
 
     end
 
