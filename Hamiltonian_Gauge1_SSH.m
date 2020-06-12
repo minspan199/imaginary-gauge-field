@@ -2,11 +2,11 @@ clc
 clear all
 close all
 
-Nd = 16; t1 = 3; t2 = 1; g = 1; h = 0.5493;
+Nd = 16; t1 = 3; t2 = 1; g = 0.1; h = 0.5493;loss = -1;
 
 % h = -0.3466; h = 0.2466;
 
-H = diag([repmat([1i*g -1i*g],[1 Nd]) 1i*g]) +...
+H = diag([repmat([1i*loss -1i*g],[1 Nd]) 1i*g]) +...
     diag(repmat([t1*exp(h) t2*exp(h)],[1 Nd]),1) +...
     diag(repmat([t1*exp(-h) t2*exp(-h)],[1 Nd]),-1);  % Assembling of Hamiltonian matrix
 % H(1,1) = 0.62i; H(2*Nd + 1,2*Nd + 1) = H(2*Nd + 1,2*Nd + 1) - 0.1i;
