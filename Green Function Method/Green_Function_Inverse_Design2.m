@@ -3,7 +3,7 @@ clc;clear all;close all;
 
 %% Input image (virtual plane)
 global lambda k AmpImage N M dW z;
-N = 7;
+N = 3;
 
 dW = 20e-6; %Spacing between elements
 z = 100e-6; % Distance of Image plane from the resonator plane
@@ -12,13 +12,13 @@ dW = 100e-6; %Spacing between elements
 z = 1000e-6; % Distance of Image plane from the resonator plane
 
 dW = 200e-6; %Spacing between elements
-z = 2500e-6; % Distance of Image plane from the resonator plane
+z = 1000e-6; % Distance of Image plane from the resonator plane
 
 lambda = 1.550e-6;
 k = 2 * pi / lambda;
 
 A_virtual = zeros(N, N); % initial an array to store sample image for calculation
-A_virtual(4, 3:5) = 1;
+A_virtual(2, 2) = 1;
 [M, N] = size(A_virtual);
 
 figure;
@@ -91,7 +91,7 @@ set(gca,'FontSize', 12) % Font Size
 %% sample plane profile quantization
 E_sample_nomalized = HologramHelperClass.normalize(E_sample);
 E_quantized_sample = HologramHelperClass.quantizeAmp(E_sample_nomalized)...
-    .*exp(1i*HologramHelperClass.quantizePhase4(angle(E_sample)));
+    .*exp(1i*HologramHelperClass.quantizePhase3(angle(E_sample)));
 E_quantized_holo = HologramHelperClass.supperposition(conj(E_quantized_sample));
 
 %% sample profile
