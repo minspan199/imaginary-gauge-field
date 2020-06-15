@@ -2,7 +2,7 @@ clc
 clear all
 close all
 
-Nd = 16; t1 = 3; t2 = 1; g = 0.1; h = 0.5493;loss = -1;
+Nd = 16; t1 = 3; t2 = 1; g = 0.1; h = 0.5493;loss = -0.1;
 
 % h = -0.3466; h = 0.2466;
 
