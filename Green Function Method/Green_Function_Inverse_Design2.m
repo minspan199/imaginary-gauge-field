@@ -18,7 +18,7 @@ lambda = 1.550e-6;
 k = 2 * pi / lambda;
 
 A_virtual = zeros(N, N); % initial an array to store sample image for calculation
-A_virtual(2, 2) = 1;
+A_virtual(1, 1) = 1;
 [M, N] = size(A_virtual);
 
 figure;
@@ -80,7 +80,7 @@ set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 12) % Font Size
 
 figure;
-imagesc(angle(E_sample));
+imagesc(angle(E_sample),[-pi, pi]);
 colormap jet
 colorbar
 title('Sample Plane Phase')
@@ -88,11 +88,14 @@ set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 12) % Font Size
 
 
+
 %% sample plane profile quantization
 E_sample_nomalized = HologramHelperClass.normalize(E_sample);
 E_quantized_sample = HologramHelperClass.quantizeAmp(E_sample_nomalized)...
     .*exp(1i*HologramHelperClass.quantizePhase3(angle(E_sample)));
 E_quantized_holo = HologramHelperClass.supperposition(conj(E_quantized_sample));
+am = abs(E_quantized_sample);
+pm = angle(E_quantized_sample);
 
 %% sample profile
 
@@ -105,7 +108,7 @@ set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 12) % Font Size
 
 figure;
-imagesc(angle(E_quantized_sample));
+imagesc(angle(E_quantized_sample), [-pi, pi]);
 colormap jet
 colorbar
 title('Sample Plane Phase')
