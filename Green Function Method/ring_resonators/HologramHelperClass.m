@@ -22,7 +22,8 @@ classdef HologramHelperClass
 
         function E_Sample = Green(coordImageX, coordImageY, E_Sample)
 
-            global lambda k AmpImage N M dW z;
+            global lambda k AmpImage N M z meshSize;
+            dW = meshSize;
             [N, M] = size(E_Sample);
             amplitude = E_Sample(coordImageX, coordImageY); % inversely solved electric field at the sample plane
 
