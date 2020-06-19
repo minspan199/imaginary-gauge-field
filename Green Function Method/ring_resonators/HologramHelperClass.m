@@ -9,6 +9,8 @@ classdef HologramHelperClass
             E_Sample2 = zeros(M, N);
 
             for ii = 1:M
+                
+                disp(ii/M*100)
 
                 for jj = 1:N
 
@@ -22,7 +24,7 @@ classdef HologramHelperClass
 
         function E_Sample = Green(coordImageX, coordImageY, E_Sample)
 
-            global lambda k AmpImage N M z meshSize;
+            global  k  N M z meshSize;
             dW = meshSize;
             [N, M] = size(E_Sample);
             amplitude = E_Sample(coordImageX, coordImageY); % inversely solved electric field at the sample plane
@@ -32,8 +34,6 @@ classdef HologramHelperClass
             %     [coordSampleX, coordSampleY] = meshgrid((1:N) * dW, (1:M) * dW);
 
             for ii = 1:N
-                
-                disp(ii/N*100)
 
                 for jj = 1:M
 
