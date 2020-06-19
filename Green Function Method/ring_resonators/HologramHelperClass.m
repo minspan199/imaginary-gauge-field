@@ -32,6 +32,8 @@ classdef HologramHelperClass
             %     [coordSampleX, coordSampleY] = meshgrid((1:N) * dW, (1:M) * dW);
 
             for ii = 1:N
+                
+                disp(ii/N*100)
 
                 for jj = 1:M
 
