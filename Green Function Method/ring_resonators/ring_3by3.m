@@ -3,6 +3,7 @@ clear all;
 close all;
 
 %% define a backbone
+global lambda k AmpImage N M meshSize z;
 N = 3; %3by3
 space = 200e-6; %Spacing between elements
 z = 1000e-6; % Distance of Image plane from the resonator plane
