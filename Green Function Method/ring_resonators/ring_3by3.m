@@ -16,7 +16,7 @@ Phase_sample = [2.09439510239320,0,0;0,0,-2.09439510239320;0,-2.09439510239320,-
 
 % sizeOfResonator = 10e-6; %10um.
 spotSize = 10e-6;
-meshSize = 100E-9;
+meshSize = 5E-6;
 
 nearFields{N,N} = 0;
 
