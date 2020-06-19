@@ -28,8 +28,8 @@ nearField = 0;
 %% Generate the sample plane profile
 for col = 1:N
     for row = 1:N
-        nearFields{row, col} = Amp_sample(row, col) * exp((-((xsNear - (col-1) * space).^2 ...
-        + (ysNear - (row-1) * space).^2) / (spotSize^2))) * exp(1i * Phase_sample(row, col));
+        nearFields{row, col} = Amp_sample(row, col) * exp((-((xsNear - (col-0.5) * space).^2 ...
+        + (ysNear - (row-0.5) * space).^2) / (spotSize^2))) * exp(1i * Phase_sample(row, col));
         nearField = nearField + nearFields{row, col};
     end
 end
@@ -37,4 +37,9 @@ end
 figure;
 imagesc(abs(nearField));
 
+%% calculate the hologram
+E_holo = HologramHelperClass.supperposition(conj(nearField));
+
+figure;
+imagesc(abs(E_holo));
 
