@@ -50,7 +50,7 @@ set(gca,'FontSize', 12) % Font Size
     
     E_holo = HologramHelperClass.supperposition(conj(E_sample));
     
-    
+    oriphase = angle(conj(E_sample));
 %% virtual plane
 
 figure;
@@ -95,7 +95,7 @@ E_quantized_sample = HologramHelperClass.quantizeAmp(E_sample_nomalized)...
     .*exp(1i*HologramHelperClass.quantizePhase3(angle(E_sample)));
 E_quantized_holo = HologramHelperClass.supperposition(conj(E_quantized_sample));
 am = abs(E_quantized_sample);
-pm = angle(E_quantized_sample);
+pm = angle(conj(E_quantized_sample));
 
 %% sample profile
 
