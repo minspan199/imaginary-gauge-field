@@ -3,7 +3,7 @@ clc;clear all;close all;
 
 %% Input image (virtual plane)
 global lambda k AmpImage N M dW z;
-N = 3;
+N = 90;
 
 dW = 20e-6; %Spacing between elements
 z = 100e-6; % Distance of Image plane from the resonator plane
@@ -11,14 +11,15 @@ z = 100e-6; % Distance of Image plane from the resonator plane
 dW = 100e-6; %Spacing between elements
 z = 1000e-6; % Distance of Image plane from the resonator plane
 
-dW = 200e-6; %Spacing between elements
-z = 1000e-6; % Distance of Image plane from the resonator plane
+dW = 1.5e-6; %Spacing between elements
+z = 10e-6; % Distance of Image plane from the resonator plane
 
 lambda = 1.550e-6;
 k = 2 * pi / lambda;
 
 A_virtual = zeros(N, N); % initial an array to store sample image for calculation
-A_virtual(1, 2) = 1;
+A_virtual(4, 4) = 1;
+
 [M, N] = size(A_virtual);
 
 figure;
@@ -119,7 +120,7 @@ set(gca,'FontSize', 12) % Font Size
 
 figure;
 imagesc(abs(E_quantized_holo));
-colormap gray
+% colormap gray
 colorbar
 title('Image Plane(recovered pattern)')
 set(gcf, 'Position', [00, 00, 350, 300])

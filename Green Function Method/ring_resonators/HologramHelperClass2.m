@@ -1,4 +1,4 @@
-classdef HologramHelperClass
+classdef HologramHelperClass2
 
     methods (Static)
 
@@ -7,46 +7,14 @@ classdef HologramHelperClass
             [M, N] = size(E_Sample);
 
             E_Sample2 = zeros(M, N);
-            
-            disp('Computing fields by Green function......')
-            
-            E_Sample3 = HologramHelperClass.supperposition2(E_Sample);
-            
-            disp('Assembling results......')
-            
+
             for ii = 1:M
-
-                for jj = 1:N    
-
-                    E_Sample2 = E_Sample2 + E_Sample3{ii, jj};
-
-                end
-
-            end
-
-        end
-        
-        function E_Sample3 = supperposition2(E_Sample)
-
-            [M, N] = size(E_Sample);
-
-            E_Sample2 = zeros(M, N);
-            
-            E_Sample3{M, N} = zeros(M, N);
-            
-            parfor ii = 1:M
+                
+                disp(ii/M*100)
 
                 for jj = 1:N
-                    
-%                     if abs(E_Sample(ii, jj)) < 1e-6
-%                         
-%                         E_Sample3{ii, jj} = zeros(M, N);
-%                         
-%                         continue
-%                         
-%                     end                        
 
-                    E_Sample3{ii, jj} = HologramHelperClass.Green(ii, jj, E_Sample);
+                    E_Sample2 = E_Sample2 + HologramHelperClass.Green(ii, jj, E_Sample);
 
                 end
 
@@ -57,10 +25,6 @@ classdef HologramHelperClass
         function E_Sample = Green(coordImageX, coordImageY, E_Sample)
 
             global  k  N M z meshSize;
-            meshSize = 2000E-9;
-            lambda = 1.550e-6;
-            k = 2 * pi / lambda;
-            z = 1000e-6; % Distance of Image plane from the resonator plane
             dW = meshSize;
             [N, M] = size(E_Sample);
             amplitude = E_Sample(coordImageX, coordImageY); % inversely solved electric field at the sample plane

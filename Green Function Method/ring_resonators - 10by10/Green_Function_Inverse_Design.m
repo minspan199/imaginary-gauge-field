@@ -3,7 +3,7 @@ clc;clear all;close all;
 
 %% Input image (virtual plane)
 global lambda k AmpImage N M dW z;
-N = 3;
+N = 15;
 
 dW = 20e-6; %Spacing between elements
 z = 100e-6; % Distance of Image plane from the resonator plane
@@ -12,13 +12,13 @@ dW = 100e-6; %Spacing between elements
 z = 1000e-6; % Distance of Image plane from the resonator plane
 
 dW = 200e-6; %Spacing between elements
-z = 1000e-6; % Distance of Image plane from the resonator plane
+z = 2500e-6; % Distance of Image plane from the resonator plane
 
 lambda = 1.550e-6;
 k = 2 * pi / lambda;
 
 A_virtual = zeros(N, N); % initial an array to store sample image for calculation
-A_virtual(1, 2) = 1;
+A_virtual(8, 6:10) = 1;
 [M, N] = size(A_virtual);
 
 figure;
@@ -50,7 +50,7 @@ set(gca,'FontSize', 12) % Font Size
     
     E_holo = HologramHelperClass.supperposition(conj(E_sample));
     
-    oriphase = angle(conj(E_sample));
+    
 %% virtual plane
 
 figure;
@@ -80,7 +80,7 @@ set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 12) % Font Size
 
 figure;
-imagesc(angle(E_sample),[-pi, pi]);
+imagesc(angle(E_sample));
 colormap jet
 colorbar
 title('Sample Plane Phase')
@@ -88,14 +88,11 @@ set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 12) % Font Size
 
 
-
 %% sample plane profile quantization
 E_sample_nomalized = HologramHelperClass.normalize(E_sample);
 E_quantized_sample = HologramHelperClass.quantizeAmp(E_sample_nomalized)...
-    .*exp(1i*HologramHelperClass.quantizePhase3(angle(E_sample)));
+    .*exp(1i*HologramHelperClass.quantizePhase4(angle(E_sample)));
 E_quantized_holo = HologramHelperClass.supperposition(conj(E_quantized_sample));
-am = abs(E_quantized_sample);
-pm = angle(conj(E_quantized_sample));
 
 %% sample profile
 
@@ -108,7 +105,7 @@ set(gcf, 'Position', [00, 00, 350, 300])
 set(gca,'FontSize', 12) % Font Size
 
 figure;
-imagesc(angle(E_quantized_sample), [-pi, pi]);
+imagesc(angle(E_quantized_sample));
 colormap jet
 colorbar
 title('Sample Plane Phase')

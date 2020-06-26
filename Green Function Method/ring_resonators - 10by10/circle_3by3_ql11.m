@@ -12,20 +12,20 @@ lambda = 1.550e-6;
 k = 2 * pi / lambda;
 
 Amp_sample = ones(N,N);
-Phase_sample = [0	-2.09439510239320	0
-0	0	0
-2.09439510239320	0	2.09439510239320];
+Amp_sample(1,1)=1;
+Phase_sample = [-2.02683361958052	0.0368064810044825	0.465120796750885
+0.0368064810044825	-0.402838125625603	2.73510393540453
+0.465120796750885	2.73510393540453	2.11403205860375];
 
 % sizeOfResonator = 10e-6; %10um.
-spotSizeOuter = 20e-6;
+spotSize = 20e-6;
+meshSize = 10000E-9;
 spotSizeInner = 15e-6;
-meshSize = 2000E-9;
-
 boundary = 00e-6;
 
 nearFields{N,N} = 0;
 
-totalMesh = (space + boundary+ spotSizeOuter)*(N+1)/meshSize;
+totalMesh = (space + boundary+ spotSize)*(N+1)/meshSize;
 
 [xsNear, ysNear] = meshgrid((0:totalMesh) .* meshSize); % defining near field grid + xN/2
 
@@ -34,12 +34,10 @@ nearField = 0;
 %% Generate the sample plane profile
 for col = 1:N
     for row = 1:N
-        nearFields{row, col} = Amp_sample(row, col) *...
-            (exp((-((xsNear - boundary*2 - (col-0.25) * space).^2 + ...
-            (ysNear - boundary*2 - (row-0.25) * space).^2) / (spotSizeOuter^2)))-...
-            exp((-((xsNear - boundary*2 - (col-0.25) * space).^2 + ...
-            (ysNear - boundary*2 - (row-0.25) * space).^2) / (spotSizeInner^2))))* ...
-            exp(1i * Phase_sample(row, col));
+        nearFields{row, col} = Amp_sample(row, col) * (exp((-((xsNear - boundary*2 - (col-0.25) * space).^2 ...
+        + (ysNear - boundary*2 - (row-0.25) * space).^2) / (spotSize^2)))...
+        -exp((-((xsNear - boundary*2 - (col-0.25) * space).^2 + ...
+            (ysNear - boundary*2 - (row-0.25) * space).^2) / (spotSizeInner^2))))* exp(1i * Phase_sample(row, col));
         nearField = nearField + nearFields{row, col};
     end
 end
@@ -54,7 +52,7 @@ imagesc(angle(nearField));
 colorbar
 
 %% calculate the hologram
-E_holo = HologramHelperClass2.supperposition(conj(HologramHelperClass2.normalize(nearField)));
+E_holo = HologramHelperClass.supperposition(conj(nearField));
 
 figure;
 imagesc(abs((E_holo.*E_holo)));
