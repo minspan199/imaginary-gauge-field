@@ -3,7 +3,7 @@ clc;clear all;close all;
 
 %% Input image (virtual plane)
 global lambda k AmpImage N M dW z;
-N = 7;
+N = 3;
 
 dW = 20e-6; %Spacing between elements
 z = 100e-6; % Distance of Image plane from the resonator plane
@@ -139,13 +139,13 @@ set(gca,'FontSize', 12) % Font Size
 
 %% AVG SNR
 I_holo = abs(E_holo).*abs(E_holo);
-SNR = I_holo((N+1)/2, (N+1)/2)/ (sum(sum(I_holo)) - I_holo((N+1)/2, (N+1)/2)) * (N*N-1);
+SNRA = I_holo((N+1)/2, (N+1)/2)/ (sum(sum(I_holo)) - I_holo((N+1)/2, (N+1)/2)) * (N*N-1);
 
 %% SNR
 screen = ones(N,N);
 screen((N+1)/2, (N+1)/2) = 0;
 I_holo = abs(E_holo).*abs(E_holo);
-SNR2 = I_holo((N+1)/2, (N+1)/2)/ (max(max(I_holo.*screen)));
+SNRS = I_holo((N+1)/2, (N+1)/2)/ (max(max(I_holo.*screen)));
 
 data = [3,20.9841962400000,10.5065537600000;5,23.2812373900000,8.10447850900000;7,52.9323449900000,18.7397361900000;9,88.3430482100000,16.6502890400000;11,154,25.0604257200000;13,190,28.4645057900000;15,299,29.1835535300000;17,409,44.2370793900000;19,461,53.9294961400000;33,1240,131;55,3190,176];
 Nx = data(:, 1);
